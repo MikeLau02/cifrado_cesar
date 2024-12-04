@@ -1,13 +1,27 @@
 import java.io.*;
 import java.util.Properties;
 
+
 public class FileHandler {
+
+    /**
+     * Escribe texto en un archivo. Si el archivo no existe, se crea.
+     * @param fileName : nombre del archivo donde se escribirá el texto
+     * @param content : texto a escribir en el archivo.
+     * @throws IOException : Si ocurre un error al escribir el archivo
+     */
 
     public void writeToFile(String fileName, String content) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(content);
         }
     }
+
+    /**
+     * Lee el contenido de un archivo, lo devuelve como una cadena.
+     * @param fileName :
+     * @return Devuelve el contenido c
+     */
 
     public String readFile(String fileName) throws IOException {
         StringBuilder content = new StringBuilder();
@@ -38,11 +52,9 @@ public class FileHandler {
 
     public Properties loadProperties(String fileName) throws IOException {
         Properties props = new Properties();
-
         try (FileInputStream in = new FileInputStream(fileName)) {
             props.load(in);
         }
-
         return props;
     }
 }
